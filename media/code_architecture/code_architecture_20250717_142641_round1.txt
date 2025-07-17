@@ -1,0 +1,151 @@
+【代码架构文档】
+[
+  {
+    "模块名称": "普通用户模块",
+    "文件路径": "/user/user_controller.py",
+    "包含函数": [
+      {
+        "函数名": "initiate_item_registration",
+        "输入参数": ["item_name: str", "description: str", "pickup_location: str", "time: str", "item_image: bytes"],
+        "返回类型": "str",
+        "功能说明": "发起物品登记请求"
+      },
+      {
+        "函数名": "initiate_lost_item_publish",
+        "输入参数": ["lost_description: str", "lost_location: str", "time: str", "contact_info: str", "item_image: bytes"],
+        "返回类型": "str",
+        "功能说明": "发起失物发布请求"
+      },
+      {
+        "函数名": "view_matching_recommendations",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "查看匹配推荐信息"
+      },
+      {
+        "函数名": "initiate_identity_verification",
+        "输入参数": ["lost_details: str"],
+        "返回类型": "str",
+        "功能说明": "发起身份验证请求"
+      }
+    ]
+  },
+  {
+    "模块名称": "管理员模块",
+    "文件路径": "/admin/admin_controller.py",
+    "包含函数": [
+      {
+        "函数名": "initiate_identity_verification_review",
+        "输入参数": ["user_info: dict"],
+        "返回类型": "str",
+        "功能说明": "发起身份验证审核请求"
+      },
+      {
+        "函数名": "initiate_information_review",
+        "输入参数": ["lost_and_found_info: dict"],
+        "返回类型": "str",
+        "功能说明": "发起信息审核请求"
+      }
+    ]
+  },
+  {
+    "模块名称": "失物招领系统服务模块",
+    "文件路径": "/service/lost_and_found_service.py",
+    "包含函数": [
+      {
+        "函数名": "handle_item_registration",
+        "输入参数": ["item_name: str", "description: str", "pickup_location: str", "time: str", "item_image: bytes"],
+        "返回类型": "str",
+        "功能说明": "处理物品登记请求"
+      },
+      {
+        "函数名": "handle_lost_item_publish",
+        "输入参数": ["lost_description: str", "lost_location: str", "time: str", "contact_info: str", "item_image: bytes"],
+        "返回类型": "str",
+        "功能说明": "处理失物发布请求"
+      },
+      {
+        "函数名": "handle_matching_recommendations",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "处理匹配推荐信息请求"
+      },
+      {
+        "函数名": "handle_identity_verification",
+        "输入参数": ["lost_details: str"],
+        "返回类型": "str",
+        "功能说明": "处理身份验证请求"
+      },
+      {
+        "函数名": "handle_identity_verification_review",
+        "输入参数": ["user_info: dict"],
+        "返回类型": "str",
+        "功能说明": "处理身份验证审核请求"
+      },
+      {
+        "函数名": "handle_information_review",
+        "输入参数": ["lost_and_found_info: dict"],
+        "返回类型": "str",
+        "功能说明": "处理信息审核请求"
+      },
+      {
+        "函数名": "send_claim_notification",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "发送认领通知"
+      }
+    ]
+  }
+]
+
+【类图建模结构】
+{
+  "classes": [
+    {
+      "name": "UserController",
+      "attributes": ["service: LostAndFoundService"],
+      "methods": ["initiate_item_registration()", "initiate_lost_item_publish()", "view_matching_recommendations()", "initiate_identity_verification()"]
+    },
+    {
+      "name": "AdminController",
+      "attributes": ["service: LostAndFoundService"],
+      "methods": ["initiate_identity_verification_review()", "initiate_information_review()"]
+    },
+    {
+      "name": "LostAndFoundService",
+      "attributes": [],
+      "methods": ["handle_item_registration()", "handle_lost_item_publish()", "handle_matching_recommendations()", "handle_identity_verification()", "handle_identity_verification_review()", "handle_information_review()", "send_claim_notification()"]
+    }
+  ],
+  "relations": [
+    {"from": "UserController", "to": "LostAndFoundService"},
+    {"from": "AdminController", "to": "LostAndFoundService"}
+  ]
+}
+
+【类图PlantUML代码】
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +initiate_item_registration()
+  +initiate_lost_item_publish()
+  +view_matching_recommendations()
+  +initiate_identity_verification()
+}
+class AdminController {
+  +service: LostAndFoundService
+  +initiate_identity_verification_review()
+  +initiate_information_review()
+}
+class LostAndFoundService {
+  +handle_item_registration()
+  +handle_lost_item_publish()
+  +handle_matching_recommendations()
+  +handle_identity_verification()
+  +handle_identity_verification_review()
+  +handle_information_review()
+  +send_claim_notification()
+}
+UserController --> LostAndFoundService
+AdminController --> LostAndFoundService
+@enduml

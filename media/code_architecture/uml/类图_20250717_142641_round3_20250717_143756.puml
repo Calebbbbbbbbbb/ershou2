@@ -1,0 +1,30 @@
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +发起物品登记请求(item_name: str, description: str, pickup_location: str, time: str, item_image: bytes): str
+  +发起失物发布请求(lost_description: str, lost_location: str, time: str, contact_info: str, item_image: bytes): str
+  +查看匹配推荐信息(): dict
+  +发起身份验证请求(lost_details: str): str
+}
+class AdminController {
+  +service: LostAndFoundService
+  +发起身份验证审核请求(user_info: dict): str
+  +发起信息审核请求(lost_and_found_info: dict): str
+  +信息匹配与推荐 - 人工审核(): dict
+  +联系与认领管理审核(): str
+}
+class LostAndFoundService {
+  +处理物品登记请求(item_name: str, description: str, pickup_location: str, time: str, item_image: bytes): str
+  +处理失物发布请求(lost_description: str, lost_location: str, time: str, contact_info: str, item_image: bytes): str
+  +处理匹配推荐信息请求(): dict
+  +处理身份验证请求(lost_details: str): str
+  +处理身份验证审核请求(user_info: dict): str
+  +处理信息审核请求(lost_and_found_info: dict): str
+  +发送认领通知(): None
+  +数据备份(): None
+  +数据恢复(): None
+  +上传物品图片处理(item_image: bytes): str
+}
+UserController --> LostAndFoundService
+AdminController --> LostAndFoundService
+@enduml

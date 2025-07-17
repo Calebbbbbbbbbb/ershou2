@@ -1,0 +1,868 @@
+[
+  {
+    "name": "性能",
+    "score": 0.25,
+    "low_nodes": [
+      "服务器应能保障系统在高并发情况下保持稳定运行。",
+      "系统进行信息匹配与推荐的时间应控制在 5 秒内，确保普通用户能及时获取推荐信息。"
+    ],
+    "tree": {
+      "description": "性能",
+      "score": 0.25,
+      "children": [
+        {
+          "description": "服务器应能保障系统在高并发情况下保持稳定运行。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "在并发用户数达到1000时，系统请求成功率不低于99%",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "处理物品登记请求，输入物品名称、描述、拾取地点、时间、物品图片，返回处理结果，功能为处理物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求，输入失物描述、丢失地点、时间、联系方式、物品图片，返回处理结果，功能为处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "在高并发情况下，系统平均响应时间不超过2秒",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "处理物品登记请求：处理物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求：处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        },
+        {
+          "description": "系统接收用户提交物品登记请求、提交失物发布请求的响应时间不超过 3 秒。",
+          "score": 1.0,
+          "children": [
+            {
+              "description": "系统接收用户提交物品登记请求的响应时间不超过 3 秒",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求：发起物品登记请求",
+                  "score": 1
+                },
+                {
+                  "description": "处理物品登记请求：处理物品登记请求",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统接收用户提交失物发布请求的响应时间不超过 3 秒",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "发起失物发布请求：发起失物发布请求",
+                  "score": 1
+                },
+                {
+                  "description": "处理失物发布请求：处理失物发布请求",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "description": "系统进行信息匹配与推荐的时间应控制在 5 秒内，确保普通用户能及时获取推荐信息。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统进行信息匹配的时间控制在3秒内",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "处理匹配推荐信息请求，输入参数：[]，返回类型：dict，功能说明：处理匹配推荐信息请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "系统进行信息推荐的时间控制在2秒内",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "查看匹配推荐信息：查看匹配推荐信息",
+                  "score": 0
+                },
+                {
+                  "description": "处理匹配推荐信息请求：处理匹配推荐信息请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        0.5,
+        0.25,
+        0.25
+      ]
+    }
+  },
+  {
+    "name": "安全性",
+    "score": 0.0,
+    "low_nodes": [
+      "服务器应对用户的个人信息和联系方式进行加密存储，防止信息泄露。",
+      "管理员应对系统进行安全防护，防止恶意攻击和数据篡改。"
+    ],
+    "tree": {
+      "description": "安全性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "服务器应对用户的个人信息和联系方式进行加密存储，防止信息泄露。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "服务器使用符合行业标准的加密算法对用户个人信息和联系方式进行加密",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "加密后的用户个人信息和联系方式存储在具备安全防护机制的数据库中",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "description": "管理员应对系统进行安全防护，防止恶意攻击和数据篡改。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "管理员应设置复杂的登录密码及访问权限，防止恶意登录攻击",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起身份验证审核请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理身份验证审核请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "管理员应对系统数据进行定期备份和加密，防止数据被篡改",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起身份验证审核请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起信息审核请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  {
+    "name": "可用性",
+    "score": 0.0,
+    "low_nodes": [
+      "服务器应保证系统每周 7 天、每天 24 小时可用，系统故障恢复时间应在 1 小时内。"
+    ],
+    "tree": {
+      "description": "可用性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "服务器应保证系统每周 7 天、每天 24 小时可用，系统故障恢复时间应在 1 小时内。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "服务器需实现每周7天、每天24小时持续可用",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "处理物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统发生故障后需在1小时内恢复",
+              "score": 0.0,
+              "children": [],
+              "weights": []
+            }
+          ],
+          "weights": [
+            0.7,
+            0.3
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "容错性",
+    "score": 0.0,
+    "low_nodes": [
+      "当普通用户输入错误信息时，系统应给出明确的错误提示，引导用户正确输入。",
+      "服务器应具备数据备份和恢复功能，防止数据丢失。"
+    ],
+    "tree": {
+      "description": "容错性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "当普通用户输入错误信息时，系统应给出明确的错误提示，引导用户正确输入。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统在普通用户输入错误信息时，清晰展示错误原因",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统针对普通用户输入的错误信息，提供具体的正确输入指引",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "处理物品登记请求：处理物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求：处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        },
+        {
+          "description": "服务器应具备数据备份和恢复功能，防止数据丢失。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "服务器应每天自动对数据进行备份",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "无",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "服务器在数据丢失时应能在2小时内完成数据恢复",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "无",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        0.3,
+        0.7
+      ]
+    }
+  },
+  {
+    "name": "易用性",
+    "score": 0.2,
+    "low_nodes": [
+      "系统界面应简洁明了，操作流程简单易懂，方便普通用户使用。"
+    ],
+    "tree": {
+      "description": "易用性",
+      "score": 0.2,
+      "children": [
+        {
+          "description": "系统界面应简洁明了，操作流程简单易懂，方便普通用户使用。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统界面元素数量不超过[X]个，避免界面杂乱",
+              "score": 0.0,
+              "children": [],
+              "weights": []
+            },
+            {
+              "description": "操作流程步骤不超过[Y]步，降低用户操作复杂度",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "description": "应为普通用户提供必要的帮助文档和操作指南。",
+          "score": 0.5,
+          "children": [
+            {
+              "description": "为普通用户提供涵盖系统基本操作流程的帮助文档",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 1
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "为普通用户提供常见问题解答的操作指南",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        0.6,
+        0.4
+      ]
+    }
+  },
+  {
+    "name": "合规性",
+    "score": 0.0,
+    "low_nodes": [
+      "管理员应确保系统的开发和运行符合相关法律法规的要求。"
+    ],
+    "tree": {
+      "description": "合规性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "管理员应确保系统的开发和运行符合相关法律法规的要求。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "管理员定期审查系统开发和运行流程，确保符合法律法规要求",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起身份验证审核请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起信息审核请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "管理员在系统开发和运行的关键节点进行合规性检查",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起身份验证审核请求：发起身份验证审核请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起信息审核请求：发起信息审核请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "界面美观性",
+    "score": 0.0,
+    "low_nodes": [
+      "系统界面设计应美观大方，色彩搭配协调，提升普通用户的体验。"
+    ],
+    "tree": {
+      "description": "界面美观性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "系统界面设计应美观大方，色彩搭配协调，提升普通用户的体验。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统界面色彩对比度在 4.5:1 以上以确保清晰易读",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "无",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "系统界面元素布局符合黄金分割比例以提升美观度",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "无",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可维护性",
+    "score": 0.0,
+    "low_nodes": [
+      "管理员应保证系统代码具有良好的结构和注释，便于后续的维护和升级。"
+    ],
+    "tree": {
+      "description": "可维护性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "管理员应保证系统代码具有良好的结构和注释，便于后续的维护和升级。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "管理员需确保系统代码按照模块化原则编写，结构清晰",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "由于给定材料中未直接体现与确保系统代码按模块化原则编写、结构清晰相关的函数功能说明，所以无法找到符合要求的函数。",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "管理员需保证系统代码中关键部分的注释覆盖率达到90%以上",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起身份验证审核请求：发起身份验证审核请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起信息审核请求：发起信息审核请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可移植性",
+    "score": 0.0,
+    "low_nodes": [
+      "系统应能在不同的操作系统和手机设备上正常运行。"
+    ],
+    "tree": {
+      "description": "可移植性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "系统应能在不同的操作系统和手机设备上正常运行。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统能在主流的安卓和 iOS 操作系统上正常运行",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统能在不同品牌和型号的常见手机设备上正常运行",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可操作性",
+    "score": 0.0,
+    "low_nodes": [
+      "系统的操作应方便快捷，减少普通用户的操作步骤。"
+    ],
+    "tree": {
+      "description": "可操作性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "系统的操作应方便快捷，减少普通用户的操作步骤。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统单个操作流程的操作步骤不超过5步",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "普通用户完成常用任务的平均操作时间不超过1分钟",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起物品登记请求：发起物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起失物发布请求：发起失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可扩展性",
+    "score": 0.0,
+    "low_nodes": [
+      "管理员应确保系统具备良好的扩展性，方便后续添加新的功能模块。"
+    ],
+    "tree": {
+      "description": "可扩展性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "管理员应确保系统具备良好的扩展性，方便后续添加新的功能模块。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "管理员制定系统架构设计方案，确保架构支持新功能模块的无缝集成",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "发起身份验证审核请求",
+                  "score": 0
+                },
+                {
+                  "description": "发起信息审核请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "建立标准化的接口规范，方便新功能模块与现有系统的对接",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "处理物品登记请求：处理物品登记请求",
+                  "score": 0
+                },
+                {
+                  "description": "处理失物发布请求：处理失物发布请求",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  }
+]

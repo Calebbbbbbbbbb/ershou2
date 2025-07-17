@@ -1,0 +1,42 @@
+```plantuml
+@startuml
+left to right direction
+title 失物招领系统用例图
+
+actor "普通用户" as user
+actor "管理员" as admin
+
+rectangle "失物招领系统" {
+    usecase "物品登记" as register
+    usecase "失物发布" as publish
+    usecase "信息匹配与推荐" as match
+    usecase "联系与认领管理" as claim
+    usecase "管理后台与审核功能" as manage
+    usecase "上传物品图片" as upload
+    usecase "填写基本信息" as info
+    usecase "身份验证流程" as auth
+    usecase "信息匹配与推荐 - 智能" as smart_match
+    usecase "信息匹配与推荐 - 人工" as manual_match
+}
+
+user --> register
+user --> publish
+user --> match
+user --> claim
+admin --> match
+admin --> claim
+admin --> manage
+
+register ..> upload : include
+publish ..> upload : include
+register ..> info : include
+publish ..> info : include
+
+claim ..> auth : extend
+
+smart_match --|> match
+manual_match --|> match
+
+@enduml
+```
+上述 PlantUML 代码根据提供的 JSON 数据生成了失物招领系统的用例图。代码中定义了两个参与者（普通用户和管理员），以及多个用例。通过关联、包含、扩展和泛化关系描述了参与者与用例之间的交互。你可以将这段代码复制到 PlantUML 工具中生成对应的用例图。

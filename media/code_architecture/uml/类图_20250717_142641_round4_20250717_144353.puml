@@ -1,0 +1,32 @@
+```plantuml
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +发起物品登记请求()
+  +发起失物发布请求()
+  +查看匹配推荐信息()
+  +发起身份验证请求()
+}
+class AdminController {
+  +service: LostAndFoundService
+  +发起身份验证审核请求()
+  +发起信息审核请求()
+  +信息匹配与推荐 - 人工审核()
+  +联系与认领管理审核()
+}
+class LostAndFoundService {
+  +处理物品登记请求()
+  +处理失物发布请求()
+  +处理匹配推荐信息请求()
+  +处理身份验证请求()
+  +处理身份验证审核请求()
+  +处理信息审核请求()
+  +发送认领通知()
+  +数据备份()
+  +数据恢复()
+  +上传物品图片处理()
+}
+UserController --> LostAndFoundService
+AdminController --> LostAndFoundService
+@enduml
+```

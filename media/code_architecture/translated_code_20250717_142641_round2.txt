@@ -1,0 +1,225 @@
+【代码架构文档】
+[
+  {
+    "模块名称": "普通用户模块",
+    "文件路径": "/user/user_controller.py",
+    "包含函数": [
+      {
+        "函数名": "发起物品登记请求",
+        "输入参数": [
+          "item_name: str",
+          "description: str",
+          "pickup_location: str",
+          "time: str",
+          "item_image: bytes"
+        ],
+        "返回类型": "str",
+        "功能说明": "发起物品登记请求，同时考虑系统易用性、可操作性和可移植性，对输入进行初步检查，若错误给出提示"
+      },
+      {
+        "函数名": "发起失物发布请求",
+        "输入参数": [
+          "lost_description: str",
+          "lost_location: str",
+          "time: str",
+          "contact_info: str",
+          "item_image: bytes"
+        ],
+        "返回类型": "str",
+        "功能说明": "发起失物发布请求，对用户联系方式加密存储，考虑系统易用性、可操作性和可移植性，对输入进行初步检查，若错误给出提示"
+      },
+      {
+        "函数名": "查看匹配推荐信息",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "查看匹配推荐信息，控制信息匹配与推荐时间在 5 秒内"
+      },
+      {
+        "函数名": "发起身份验证请求",
+        "输入参数": [
+          "lost_details: str"
+        ],
+        "返回类型": "str",
+        "功能说明": "发起身份验证请求"
+      }
+    ]
+  },
+  {
+    "模块名称": "管理员模块",
+    "文件路径": "/admin/admin_controller.py",
+    "包含函数": [
+      {
+        "函数名": "发起身份验证审核请求",
+        "输入参数": [
+          "user_info: dict"
+        ],
+        "返回类型": "str",
+        "功能说明": "发起身份验证审核请求，设置复杂登录密码及访问权限，定期备份和加密系统数据，确保系统合规性和可维护性，保证代码注释覆盖率"
+      },
+      {
+        "函数名": "发起信息审核请求",
+        "输入参数": [
+          "lost_and_found_info: dict"
+        ],
+        "返回类型": "str",
+        "功能说明": "发起信息审核请求，定期备份和加密系统数据，确保系统合规性和可维护性，保证代码注释覆盖率"
+      }
+    ]
+  },
+  {
+    "模块名称": "失物招领系统服务模块",
+    "文件路径": "/service/lost_and_found_service.py",
+    "包含函数": [
+      {
+        "函数名": "处理物品登记请求",
+        "输入参数": [
+          "item_name: str",
+          "description: str",
+          "pickup_location: str",
+          "time: str",
+          "item_image: bytes"
+        ],
+        "返回类型": "str",
+        "功能说明": "处理物品登记请求，在高并发下保持稳定运行，控制响应时间不超过 3 秒，具备容错性，对错误输入给出提示，保证系统可用性，支持系统可扩展性"
+      },
+      {
+        "函数名": "处理失物发布请求",
+        "输入参数": [
+          "lost_description: str",
+          "lost_location: str",
+          "time: str",
+          "contact_info: str",
+          "item_image: bytes"
+        ],
+        "返回类型": "str",
+        "功能说明": "处理失物发布请求，对用户联系方式加密存储，在高并发下保持稳定运行，控制响应时间不超过 3 秒，具备容错性，对错误输入给出提示，保证系统可用性，支持系统可扩展性"
+      },
+      {
+        "函数名": "处理匹配推荐信息请求",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "处理匹配推荐信息请求，控制信息匹配与推荐时间在 5 秒内"
+      },
+      {
+        "函数名": "处理身份验证请求",
+        "输入参数": [
+          "lost_details: str"
+        ],
+        "返回类型": "str",
+        "功能说明": "处理身份验证请求"
+      },
+      {
+        "函数名": "处理身份验证审核请求",
+        "输入参数": [
+          "user_info: dict"
+        ],
+        "返回类型": "str",
+        "功能说明": "处理身份验证审核请求"
+      },
+      {
+        "函数名": "处理信息审核请求",
+        "输入参数": [
+          "lost_and_found_info: dict"
+        ],
+        "返回类型": "str",
+        "功能说明": "处理信息审核请求"
+      },
+      {
+        "函数名": "发送认领通知",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "发送认领通知"
+      },
+      {
+        "函数名": "数据备份",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "服务器每天自动对数据进行备份"
+      },
+      {
+        "函数名": "数据恢复",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "服务器在数据丢失时在 2 小时内完成数据恢复"
+      }
+    ]
+  }
+]
+
+【类图建模结构】
+{
+  "classes": [
+    {
+      "name": "UserController",
+      "attributes": ["service: LostAndFoundService"],
+      "methods": [
+        "发起物品登记请求(item_name: str, description: str, pickup_location: str, time: str, item_image: bytes): str",
+        "发起失物发布请求(lost_description: str, lost_location: str, time: str, contact_info: str, item_image: bytes): str",
+        "查看匹配推荐信息(): dict",
+        "发起身份验证请求(lost_details: str): str"
+      ]
+    },
+    {
+      "name": "AdminController",
+      "attributes": ["service: LostAndFoundService"],
+      "methods": [
+        "发起身份验证审核请求(user_info: dict): str",
+        "发起信息审核请求(lost_and_found_info: dict): str"
+      ]
+    },
+    {
+      "name": "LostAndFoundService",
+      "attributes": [],
+      "methods": [
+        "处理物品登记请求(item_name: str, description: str, pickup_location: str, time: str, item_image: bytes): str",
+        "处理失物发布请求(lost_description: str, lost_location: str, time: str, contact_info: str, item_image: bytes): str",
+        "处理匹配推荐信息请求(): dict",
+        "处理身份验证请求(lost_details: str): str",
+        "处理身份验证审核请求(user_info: dict): str",
+        "处理信息审核请求(lost_and_found_info: dict): str",
+        "发送认领通知(): None",
+        "数据备份(): None",
+        "数据恢复(): None"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "UserController",
+      "to": "LostAndFoundService"
+    },
+    {
+      "from": "AdminController",
+      "to": "LostAndFoundService"
+    }
+  ]
+}
+
+【类图PlantUML代码】
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +发起物品登记请求(item_name: str, description: str, pickup_location: str, time: str, item_image: bytes): str
+  +发起失物发布请求(lost_description: str, lost_location: str, time: str, contact_info: str, item_image: bytes): str
+  +查看匹配推荐信息(): dict
+  +发起身份验证请求(lost_details: str): str
+}
+class AdminController {
+  +service: LostAndFoundService
+  +发起身份验证审核请求(user_info: dict): str
+  +发起信息审核请求(lost_and_found_info: dict): str
+}
+class LostAndFoundService {
+  +处理物品登记请求(item_name: str, description: str, pickup_location: str, time: str, item_image: bytes): str
+  +处理失物发布请求(lost_description: str, lost_location: str, time: str, contact_info: str, item_image: bytes): str
+  +处理匹配推荐信息请求(): dict
+  +处理身份验证请求(lost_details: str): str
+  +处理身份验证审核请求(user_info: dict): str
+  +处理信息审核请求(lost_and_found_info: dict): str
+  +发送认领通知(): None
+  +数据备份(): None
+  +数据恢复(): None
+}
+UserController --> LostAndFoundService
+AdminController --> LostAndFoundService
+@enduml

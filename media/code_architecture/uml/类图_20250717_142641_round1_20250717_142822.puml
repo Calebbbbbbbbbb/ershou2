@@ -1,0 +1,25 @@
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +initiate_item_registration()
+  +initiate_lost_item_publish()
+  +view_matching_recommendations()
+  +initiate_identity_verification()
+}
+class AdminController {
+  +service: LostAndFoundService
+  +initiate_identity_verification_review()
+  +initiate_information_review()
+}
+class LostAndFoundService {
+  +handle_item_registration()
+  +handle_lost_item_publish()
+  +handle_matching_recommendations()
+  +handle_identity_verification()
+  +handle_identity_verification_review()
+  +handle_information_review()
+  +send_claim_notification()
+}
+UserController --> LostAndFoundService
+AdminController --> LostAndFoundService
+@enduml
